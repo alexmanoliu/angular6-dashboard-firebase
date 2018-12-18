@@ -1,0 +1,7 @@
+.spreadsheets {
+    position: relative;
+    padding-bottom: 75%;
+    height: 0;
+    width: 100%;
+    overflow: hidden;
+}

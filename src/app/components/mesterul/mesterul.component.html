@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-12 mb-4 mt-4">
+    <h2>
+      <i class="fa fa-wrench"></i> Mesteri</h2>
+    <a routerLink="/mester/add" class="btn btn-primary mt-4">
+      <i class="fa fa-plus"></i> New
+    </a>
+  </div>
+
+  <div class="col-md-12">
+    <h5 class="text-right text-secondary mt-4"> Mesteri Activi: {{ totalMesteri | currency:"RON ":"symbol" }}</h5>
+  </div>
+</div>
+<div class="table-responsive-sm">
+  <table *ngIf="mesterul?.length > 0;else noMesterul" class="table table-striped ">
+    <thead class="thead-inverse thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Nume</th>
+        <th>Email</th>
+        <th>Telefon</th>
+        <th>Firma</th>
+        <th>Aptitudini</th>
+        <th>OfertaMester</th>
+        <th>Suma incasata</th>
+        <th>Detalii</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let mester of mesterul">
+        <td>{{ mester.id }}</td>
+        <td>{{ mester.Nume }} {{ mester.Prenume }}</td>
+        <td>{{ mester.email }}</td>
+        <td>{{ mester.telefon }}</td>
+        <td>{{ mester.Firma }}</td>
+        <td>{{ mester.Aptitudini }}</td>
+        <td>{{ mester.OfertaMester }}</td>
+        <td>{{ mester.balance | currency:"RON ":"symbol" }}</td>
+        <td>
+          <a routerLink="/mester/{{ mester.id }}" class="btn btn-warning btn-sm">
+            <i class="fa fa-arrow-circle-o-right"></i> Detalii</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #noMesterul>
+  <hr>
+  <h5>Nu sunt mesteri in baza de date</h5>
+</ng-template>

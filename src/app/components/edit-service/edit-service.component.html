@@ -1,0 +1,110 @@
+<div class="row">
+  <div class="col-md-6">
+    <a routerLink="/service/{{ id }}/" class="btn btn-link">
+      <h2>
+        <i class="fa fa-chevron-circle-left"></i> Dashboard</h2>
+    </a>
+  </div>
+  <div class="col-md-6">
+
+  </div>
+</div>
+
+<div class="card mb-4">
+  <div class="card-header">
+    Edit service
+  </div>
+  <div class="card-body">
+    <form #serviceForm="ngForm" (ngSubmit)="onSubmit(serviceForm)" class="">
+      <!-- introduce DenumireServiciu -->
+      <div class="form-group">
+        <label for="DenumireServiciu">DenumireServiciu</label>
+        <input type="text" class="form-control" name="DenumireServiciu" #serviceDenumireServiciu="ngModel" [ngClass]="{'is-invalid':serviceDenumireServiciu.errors && serviceDenumireServiciu.touched}"
+          [(ngModel)]="service.DenumireServiciu" minlength="2" required>
+
+        <!-- <div [hidden]="!serviceDenumireServiciu.errors?.required" class="invalid-feedback">
+          DenumireServiciu required
+        </div> -->
+        <div [hidden]="!serviceDenumireServiciu.errors?.minlength" class="invalid-feedback">
+          Must be at least 2 characters
+        </div>
+
+        <!-- introduce SubCategorie -->
+        <div class="form-group">
+          <label for="SubCategorie">SubCategorie</label>
+          <input type="text" class="form-control" name="SubCategorie" #serviceSubCategorie="ngModel" [ngClass]="{'is-invalid':serviceSubCategorie.errors && serviceSubCategorie.touched}"
+            [(ngModel)]="service.SubCategorie" minlength="2" required>
+
+          <!-- <div [hidden]="!serviceSubCategorie.errors?.required" class="invalid-feedback">
+            SubCategorie required
+          </div> -->
+          <div [hidden]="!serviceSubCategorie.errors?.minlength" class="invalid-feedback">
+            Must be at least 2 characters
+          </div>
+        </div>
+
+        <!-- introduce TipServiciu -->
+        <div class="form-group">
+          <label for="TipServiciu">TipServiciu</label>
+          <input type="text" class="form-control" name="TipServiciu" #serviceTipServiciu="ngModel" [ngClass]="{'is-invalid':serviceTipServiciu.errors && serviceTipServiciu.touched}"
+            [(ngModel)]="service.TipServiciu" minlength="2" required>
+
+          <!-- <div [hidden]="!serviceTipServiciu.errors?.required" class="invalid-feedback">
+            TipServiciu required
+          </div> -->
+          <div [hidden]="!serviceTipServiciu.errors?.pattern" class="invalid-feedback">
+            TipServiciu is not valid
+          </div>
+        </div>
+
+        <!-- introduce UnitateMasura -->
+        <div class="form-group">
+          <label for="UnitateMasura">UnitateMasura</label>
+          <input type="text" class="form-control" name="UnitateMasura" #serviceUnitateMasura="ngModel" [ngClass]="{'is-invalid':serviceUnitateMasura.errors && serviceUnitateMasura.touched}"
+            [(ngModel)]="service.UnitateMasura" minlength="2" required>
+
+          <!-- <div [hidden]="!serviceUnitateMasura.errors?.required" class="invalid-feedback">
+            UnitateMasura required
+          </div> -->
+          <div [hidden]="!serviceUnitateMasura.errors?.minlength" class="invalid-feedback">
+            Must be at least 9 characters
+          </div>
+        </div>
+
+        <!-- introduce CodServiciu -->
+        <div class="form-group">
+          <label for="CodServiciu">CodServiciu</label>
+          <input type="text" class="form-control" name="CodServiciu" #serviceCodServiciu="ngModel" [ngClass]="{'is-invalid':serviceCodServiciu.errors && serviceCodServiciu.touched}"
+            [(ngModel)]="service.CodServiciu" minlength="2" required>
+
+          <!-- <div [hidden]="!serviceCodServiciu.errors?.required" class="invalid-feedback">
+            CodServiciu required
+          </div> -->
+          <div [hidden]="!serviceCodServiciu.errors?.minlength" class="invalid-feedback">
+            Must be at least 2 characters
+          </div>
+        </div>
+
+        <!-- introduce Valabilitate -->
+        <div class="form-group">
+          <label for="Valabilitate">Valabilitate</label>
+          <input type="text" class="form-control" name="Valabilitate" #serviceValabilitate="ngModel" [ngClass]="{'is-invalid':serviceValabilitate.errors && serviceValabilitate.touched}"
+            [(ngModel)]="service.Valabilitate" minlength="2" required> Valabilitate
+          <!-- <div [hidden]="!service.errors?.required" class="invalid-feedback">
+            Valabilitate required
+          </div> -->
+          <div [hidden]="!serviceValabilitate.errors?.minlength" class="invalid-feedback">
+            Must be at least 2 characters
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="balance">Plata</label>
+          <input type="number" class="form-control" [(ngModel)]="service.balance" name="balance" #serviceBalance="ngModel" [disabled]="disableBalanceOnAdd">
+        </div>
+
+      </div>
+      <input type="submit" value="Submit" class="btn btn-primary btn-block">
+    </form>
+  </div>
+</div>

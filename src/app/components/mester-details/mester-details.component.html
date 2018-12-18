@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col-md-6">
+    <a routerLink="/" class="btn btn-link">
+      <h2>
+        <i class="fa fa-arrow-circle-o-left"> </i> Dashboard</h2>
+    </a>
+
+  </div>
+  <div class="col-md-6 mb-4">
+    <div class="btn-group pull-right">
+      <a routerLink="/mester/edit/{{ id }}" class="btn btn-warning mr-2">
+        Edit</a>
+      <button (click)="onDeleteClick()" class="btn btn-danger"> Delete</button>
+    </div>
+  </div>
+</div>
+<hr>
+<div *ngIf="mester" class="card">
+  <h3 class="card-header bg-primary text-white">{{ mester.Nume }} {{ mester.Prenume }}</h3>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-8 col-sm-6 mb-4">
+        <h4>MesterID: {{ mester.id }}</h4>
+      </div>
+      <div class="col-md-8 col-sm-6">
+        <h3>
+          Status Factura
+          <span [class.text-danger]="plataOk" [class.text-success]="!plataOk">
+            {{ mester.balance | currency:"RON ":"symbol" }}
+          </span>
+          <small>
+            <a (click)="showBalanceUpdateInput = !showBalanceUpdateInput">
+              <i class="fa fa-pencil"></i>
+            </a>
+          </small>
+        </h3>
+        <div class="clearfix">
+          <form *ngIf="showBalanceUpdateInput" (submit)="updateBalance()">
+            <div class="input-group">
+              <input type="number" name="balance" class="form-control" [(ngModel)]="mester.balance">
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-primary">Update</button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <ul class="list-group">
+      <li class="list-group-item">Email: {{ mester.email }}</li>
+      <li class="list-group-item">Telefon: {{ mester.telefon }}</li>
+      <li class="list-group-item">Aptitudini: {{ mester.Aptitudini }}</li>
+      <li class="list-group-item">Firma: {{ mester.Firma }}</li>
+      <li class="list-group-item">Contract: {{ mester.Contract }}</li>
+      <li class="list-group-item">Modalitate Plata: {{ mester.ModalitatePlata }}</li>
+      <li class="list-group-item">Total Plata: {{ mester.TotalPlata }}</li>
+      <li class="list-group-item">balance: {{ mester.balance }}</li>
+    </ul>
+  </div>
+</div>

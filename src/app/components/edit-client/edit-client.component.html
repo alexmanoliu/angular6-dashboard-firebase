@@ -1,0 +1,167 @@
+<div class="row">
+  <div class="col-md-6">
+    <a routerLink="/client/{{ id }}/" class="btn btn-link">
+      <h2>
+        <i class="fa fa-chevron-circle-left"></i> Dashboard</h2>
+    </a>
+  </div>
+  <div class="col-md-6">
+
+  </div>
+</div>
+
+<div class="card mb-4">
+  <div class="card-header">
+    Edit client
+  </div>
+  <div class="card-body">
+    <form #clientForm="ngForm" (ngSubmit)="onSubmit(clientForm)" class="">
+      <!-- introduce nume -->
+      <div class="form-group">
+        <label for="Nume">Nume</label>
+        <input type="text" class="form-control" name="Nume" #clientNume="ngModel" [ngClass]="{'is-invalid':clientNume.errors && clientNume.touched}"
+          [(ngModel)]="client.Nume" minlength="2">
+
+        <!-- <div [hidden]="!clientNume.errors?.required" class="invalid-feedback">
+          Name required
+        </div> -->
+        <div [hidden]="!clientNume.errors?.minlength" class="invalid-feedback">
+          Must be at least 2 characters
+        </div>
+
+        <!-- introduce prenume -->
+        <div class="form-group">
+          <label for="Prenume">Prenume</label>
+          <input type="text" class="form-control" name="Prenume" #clientPrenume="ngModel" [ngClass]="{'is-invalid':clientPrenume.errors && clientPrenume.touched}"
+            [(ngModel)]="client.Prenume" minlength="2">
+
+          <!-- <div [hidden]="!clientPrenume.errors?.required" class="invalid-feedback">
+            Prenume required
+          </div> -->
+          <div [hidden]="!clientPrenume.errors?.minlength" class="invalid-feedback">
+            Must be at least 2 characters
+          </div>
+        </div>
+
+        <!-- introduce email -->
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" class="form-control" name="email" #clientemail="ngModel" [ngClass]="{'is-invalid':clientemail.errors && clientemail.touched}"
+            [(ngModel)]="client.email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+          <!-- 
+          <div [hidden]="!clientemail.errors?.required" class="invalid-feedback">
+            Email required
+          </div> -->
+          <div [hidden]="!clientemail.errors?.pattern" class="invalid-feedback">
+            Email is not valid
+          </div>
+        </div>
+
+        <!-- introduce telefon -->
+        <div class="form-group">
+          <label for="telefon">Telefon</label>
+          <input type="text" class="form-control" name="telefon" #clienttelefon="ngModel" [ngClass]="{'is-invalid':clienttelefon.errors && clienttelefon.touched}"
+            [(ngModel)]="client.telefon" minlength="10">
+
+          <!-- <div [hidden]="!clienttelefon.errors?.required" class="invalid-feedback">
+            Telefon required
+          </div> -->
+          <div [hidden]="!clienttelefon.errors?.minlength" class="invalid-feedback">
+            Must be at least 9 characters
+          </div>
+        </div>
+
+        <!-- introduce cod sursa -->
+        <div class="form-group">
+          <label for="CodSursa">Cod Sursa</label>
+          <input type="text" class="form-control" name="CodSursa" #clientCodSursa="ngModel" [ngClass]="{'is-invalid':clientCodSursa.errors && clientCodSursa.touched}"
+            [(ngModel)]="client.CodSursa" minlength="2">
+
+          <!-- <div [hidden]="!clientCodSursa.errors?.required" class="invalid-feedback">
+            CodSursa required
+          </div> -->
+          <div [hidden]="!clientCodSursa.errors?.minlength" class="invalid-feedback">
+            Must be at least 2 characters
+          </div>
+        </div>
+
+        <!-- introduce Cod Serviciu -->
+        <div class="form-group">
+          <label for="CodServiciu">Cod Serviciu</label>
+          <input type="text" class="form-control" name="CodServiciu" #clientCodServiciu="ngModel" [ngClass]="{'is-invalid':clientCodServiciu.errors && clientCodServiciu.touched}"
+            [(ngModel)]="client.CodServiciu" minlength="2">
+
+          <!-- <div [hidden]="!clientCodServiciu.errors?.required" class="invalid-feedback">
+            Cod Serviciu required
+          </div> -->
+          <div [hidden]="!clientCodServiciu.errors?.minlength" class="invalid-feedback">
+            Must be at least 2 characters
+          </div>
+        </div>
+
+        <!-- introduce Status Comanda -->
+        <div class="form-group">
+          <label for="StatusComanda">Status Comanda</label>
+          <input type="text" class="form-control" name="StatusComanda" #clientStatusComanda="ngModel" [ngClass]="{'is-invalid':clientStatusComanda.errors && clientStatusComanda.touched}"
+            [(ngModel)]="client.StatusComanda" minlength="2">
+
+          <div [hidden]="!clientStatusComanda.errors?.required" class="invalid-feedback">
+            Status Comanda required
+          </div>
+          <!-- <div [hidden]="!clientStatusComanda.errors?.minlength" class="invalid-feedback">
+            Must be at least 2 characters
+          </div> -->
+        </div>
+
+        <!-- introduce Status Comanda -->
+        <div class="form-group">
+          <label for="OfertaMester">Oferta Mester</label>
+          <input type="text" class="form-control" name="OfertaMester" #clientOfertaMester="ngModel" [ngClass]="{'is-invalid':clientOfertaMester.errors && clientOfertaMester.touched}"
+            [(ngModel)]="client.OfertaMester" minlength="2">
+
+          <!-- <div [hidden]="!clientOfertaMester.errors?.required" class="invalid-feedback">
+            Oferta Mester required
+          </div> -->
+          <div [hidden]="!clientOfertaMester.errors?.minlength" class="invalid-feedback">
+            Must be at least 2 characters
+          </div>
+        </div>
+
+        <!-- introduce Mester -->
+        <div class="form-group">
+          <label for="Mester">Mester</label>
+          <input type="text" class="form-control" name="Mester" #clientMester="ngModel" [ngClass]="{'is-invalid':clientMester.errors && clientMester.touched}"
+            [(ngModel)]="client.Mester" minlength="2">
+          <!-- 
+          <div [hidden]="!clientMester.errors?.required" class="invalid-feedback">
+            Mester required
+          </div> -->
+          <div [hidden]="!clientMester.errors?.minlength" class="invalid-feedback">
+            Must be at least 2 characters
+          </div>
+        </div>
+
+        <!-- introduce ModalitatePlata -->
+        <div class="form-group">
+          <label for="ModalitatePlata">Modalitate Plata</label>
+          <input type="text" class="form-control" name="ModalitatePlata" #clientModalitatePlata="ngModel" [ngClass]="{'is-invalid':clientModalitatePlata.errors && clientModalitatePlata.touched}"
+            [(ngModel)]="client.ModalitatePlata" minlength="2">
+          <!-- 
+          <div [hidden]="!clientModalitatePlata.errors?.required" class="invalid-feedback">
+            ModalitatePlata required
+          </div> -->
+          <div [hidden]="!clientModalitatePlata.errors?.minlength" class="invalid-feedback">
+            Must be at least 2 characters
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="balance">Plata</label>
+          <input type="number" class="form-control" [(ngModel)]="client.balance" name="balance" #clientBalance="ngModel" [disabled]="disableBalanceOnEdit">
+        </div>
+
+      </div>
+      <input type="submit" value="Submit" class="btn btn-primary btn-block">
+    </form>
+  </div>
+</div>

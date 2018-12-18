@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-md-6 mb-4 mt-4">
+    <h2>
+      <i class="fa fa-users"></i> Clienti</h2>
+    <a routerLink="/client/add" class="btn btn-primary mt-4">
+      <i class="fa fa-plus"></i> New
+    </a>
+  </div>
+
+  <div class="col-md-12">
+    <h5 class="text-right text-secondary mt-4"> Total Plati: {{ totalOwed | currency:"RON ":"symbol" }}</h5>
+  </div>
+</div>
+<div class="table-responsive-sm">
+  <table *ngIf="clients?.length > 0;else noClients" class="table table-striped ">
+    <thead class="thead-inverse thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Nume</th>
+        <th>Email</th>
+        <th>Telefon</th>
+        <th>Plata</th>
+        <th>Detalii</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let client of clients">
+        <td>{{ client.id }}</td>
+        <td>{{ client.Nume }} {{ client.Prenume }}</td>
+        <td>{{ client.email }}</td>
+        <td>{{ client.telefon }}</td>
+        <td>{{ client.balance | currency:"RON ":"symbol" }}</td>
+        <td>
+          <a routerLink="/client/{{ client.id }}" class="btn btn-warning btn-sm">
+            <i class="fa fa-arrow-circle-o-right"></i> Detalii</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #noClients>
+  <hr>
+  <h5>Nu sunt clienti in baza de date</h5>
+</ng-template>

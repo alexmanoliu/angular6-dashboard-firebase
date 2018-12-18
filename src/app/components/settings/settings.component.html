@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-md-6 mb-4">
+    <a routerLink="/" class="btn btn-link">
+      <h2>
+        <i class="fa fa-arrow-circle-o-left"> </i> Dashboard</h2>
+    </a>
+  </div>
+  <div class="col-md-6"></div>
+</div>
+<div class="card mt-4">
+  <div class="card-header">
+    <h4>Editateaza Setarile</h4>
+  </div>
+  <div class="card-body">
+    <form (submit)="onSubmit()">
+      <div class="form-group form-striped">
+        <h4>
+          <label class="mr-4">Permite inregistrarea unui cont nou</label>
+          <input type="checkbox" name="allowRegistration" [checked]="settings.allowRegistration" (change)="settings.allowRegistration = !allowRegistration">
+        </h4>
+      </div>
+
+      <div class="form-group">
+        <h4>
+          <label class="mr-4">Dezactiveaza Plata la inregistarea unui cont</label>
+          <input type="checkbox" name="disableBalanceOnAdd" [checked]="settings.disableBalanceOnAdd" (change)="settings.disableBalanceOnAdd = !disableBalanceOnAdd">
+        </h4>
+      </div>
+
+      <div class="form-group">
+        <h4>
+          <label class="mr-4">Dezactiveaza Plata la editare</label>
+          <input type="checkbox" name="disableBalanceOnEdit" [checked]="settings.disableBalanceOnEdit" (change)="settings.disableBalanceOnEdit = !disableBalanceOnEdit">
+        </h4>
+      </div>
+
+      <input type="submit" value="Submit" class="btn btn-primary btn-md">
+    </form>
+  </div>
+</div>
